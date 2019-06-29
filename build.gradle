@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.ximuyi.demo'
+version = '0.0.1-SNAPSHOT'
+
+description = """springboot"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '2.0.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.0.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version:'2.0.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.0.5.RELEASE'
+    compile group: 'com.h2database', name: 'h2', version:'1.4.197'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version:'2.0.5.RELEASE'
+    compile group: 'com.ibeetl', name: 'beetl-framework-starter', version:'1.1.68.RELEASE'
+    compile group: 'com.ibeetl', name: 'beetlsql', version:'2.10.9'
+    compile group: 'com.ibeetl', name: 'beetl', version:'2.9.2'
+    compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version:'1.2.7'
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version:'1.1.10'
+    runtime group: 'mysql', name: 'mysql-connector-java', version:'5.1.47'
+    testCompile group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '2.0.2.RELEASE'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.5.RELEASE'
+}
