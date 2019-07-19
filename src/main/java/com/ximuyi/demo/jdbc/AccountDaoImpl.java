@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,8 @@ public class AccountDaoImpl implements IAccountDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Override
+	@Transactional
+	@Override
     public int add(Account account) {
         return jdbcTemplate.update("insert into account(name, money) values(?, ?)", account.getName(),account.getMoney());
     }

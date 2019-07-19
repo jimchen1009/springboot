@@ -1,25 +1,30 @@
 spring:
+
   profiles:
     active: dev
+
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true&useSSL=false
     username: root
     password: 000000
     type: com.alibaba.druid.pool.DruidDataSource
-    filters: stat
-    maxActive: 20
-    initialSize: 1
-    maxWait: 60000
-    minIdle: 1
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: select 'x'
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
+    druid:
+      clear-filters-enable: true
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      filters: stat
+
   jpa:
     properties:
       hibernate:
@@ -37,6 +42,17 @@ spring:
         min-idle: 0
         max-wait: 2000ms
     timeout: 3000ms
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 2m
+      key-prefix: true
+
+  rabbitmq:
+    addresses: "localhost"
+    port: 5672
+    connection-timeout: 3s
 
 
 server:
