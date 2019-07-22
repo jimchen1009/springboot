@@ -4,26 +4,40 @@ spring:
     active: dev
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true&useSSL=false
-    username: root
-    password: 000000
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      clear-filters-enable: true
-      max-active: 20
-      initial-size: 1
-      max-wait: 60000
-      min-idle: 1
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      validation-query: select 'x'
-      test-while-idle: true
-      test-on-borrow: true
-      test-on-return: false
-      pool-prepared-statements: true
-      max-open-prepared-statements: 20
-      filters: stat
+    primary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true&useSSL=false
+      username: root
+      password: 000000
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+        clear-filters-enable: true
+        max-active: 20
+        initial-size: 1
+        max-wait: 60000
+        min-idle: 1
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        validation-query: select 'x'
+        test-while-idle: true
+        test-on-borrow: true
+        test-on-return: false
+        pool-prepared-statements: true
+        max-open-prepared-statements: 20
+        filters: stat
+    quartz:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/quartz?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: 000000
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        minimum-idle: 5
+        idle-timeout: 150000
+        maximum-pool-size: 10
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+        max-lifetime: 0
 
   jpa:
     properties:
@@ -50,13 +64,62 @@ spring:
       key-prefix: true
 
   rabbitmq:
-    addresses: "localhost"
+    addresses: localhost
     port: 5672
-    connection-timeout: 3s
+    connection-timeout: 10s
+
+  servlet:
+    multipart:
+      max-file-size: 128KB
+      max-request-size: 128KB
+
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      comment-prefix: qrtz_
+      initialize-schema: never
+      schema: classpath:quartz/table_quartz.sql
+      #文件的注释跟脚本一起[springboot解析后的结果]，执行不了
+      #-- Dumping database structure for quartz DROP DATABASE IF EXISTS `quartz`
+      #尝试了几种方案，ScriptUtils都解析错误，没办法了
+    properties:
+      org:
+        quartz:
+           #这个配置不需要~ 看样子是会覆盖上面dataSource的配置~
+#          dataSource:
+#            quartzDataSource:
+#              driver: com.mysql.jdbc.Driver
+#              URL: jdbc:mysql:///localhost:3306/quartz
+#              user: root
+#              password: 000000
+          scheduler:
+            #instanceName设置是没啥用的~ SpringBoot貌似已经写死了BeanName作为名字了~
+            #只能写代码实现了~
+            instanceName: SpringBoot
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: qrtz_
+            isClustered: true
+            dataSource: quartzDataSource
+            clusterCheckinInterval: 10000
+            useProperties: true
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
 
 
 server:
   port: 8080
+
+logging:
+  path: D:/demo/springboot/logs
+  level: {root: info}
+
+
 
 ## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
 mybatis:
@@ -77,3 +140,7 @@ jim:
   max: ${random.int(10)}
   value: ${random.value}
   greeting: hi,i'm  ${jim.name}
+
+storage:
+  location: D:\demo\springboot\out\production\resources\storage
+

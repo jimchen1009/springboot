@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 /***
  * Consider defining a bean named 'entityManagerFactory' in your configuration
  * 删除 C:\Users\chenjingjun\.m2\repository\org\hibernate\hibernate-core目录下的文件，然后maven - update project即可。
+ *
+ * RestController注解相当于@Controller+@ResponseBody两个注解的结合，返回json数据不需要在方法前面加@ResponseBody注解
+ * 但使用@RestController这个注解，就不能返回jsp,html页面，视图解析器无法解析jsp,html页面
  */
 @RestController
 @RequestMapping("/customer")
