@@ -42,7 +42,7 @@ public class FileUploadController {
 				path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class, "serveFile", path.getFileName().toString()).build().toString())
 				.collect(Collectors.toList()));
 
-		return "uploadForm";
+		return "upload/form";
 	}
 
 	@GetMapping("/files/{filename:.+}")
