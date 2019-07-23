@@ -1,0 +1,26 @@
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+<form action="#" th:action="@{/mail}" enctype="multipart/form-data" th:object="${mail}" method="post">
+    <table>
+        <tr>
+            <td>Address:</td>
+            <td><input type="text" th:field="*{address}" /></td>
+        </tr>
+        <tr>
+            <td>Subject:</td>
+            <td><input type="text" th:field="*{subject}" /></td>
+        </tr>
+        <tr>
+            <td>message:</td>
+            <td><input type="text" th:field="*{message}" /></td>
+        </tr>
+        <tr>
+            <td>file to upload:</td>
+            <td><input type="file" th:field="*{file}" /></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Confirm</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -55,7 +55,7 @@ public class QuartzConfigration {
     public SimpleTriggerFactoryBean simpleTriggerFactoryBean(@Qualifier("simpleJobDetail") JobDetailFactoryBean jobDetailFactoryBean) {
         SimpleTriggerFactoryBean triggerFactoryBean = new SimpleTriggerFactoryBean();
         triggerFactoryBean.setJobDetail(jobDetailFactoryBean.getObject());
-        triggerFactoryBean.setRepeatInterval(3000);
+        triggerFactoryBean.setRepeatInterval(30000);
         triggerFactoryBean.setGroup(Group);
 		triggerFactoryBean.setName("simpleTrigger");
 		triggerFactoryBean.setDescription("简单触发器");
@@ -68,7 +68,7 @@ public class QuartzConfigration {
 	{
 		CronTriggerFactoryBean cronTriggerFactoryBean = new CronTriggerFactoryBean();
 		cronTriggerFactoryBean.setJobDetail(jobDetailFactoryBean.getObject());
-		cronTriggerFactoryBean.setCronExpression("0/10 * * * * ?");
+		cronTriggerFactoryBean.setCronExpression("* 0/1 * * * ?");
 		cronTriggerFactoryBean.setGroup(Group);
 		cronTriggerFactoryBean.setName("cronTrigger");
 		cronTriggerFactoryBean.setDescription("表达式触发器");
@@ -84,7 +84,7 @@ public class QuartzConfigration {
 
 	@Bean("codeTrigger")
 	public Trigger trigger() {
-		SimpleScheduleBuilder builder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever();
+		SimpleScheduleBuilder builder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(50).repeatForever();
 		return TriggerBuilder.newTrigger().forJob(jobDetail()).withIdentity("codeTrigger", Group)
 				.withDescription("编码触发器").withSchedule(builder).build();
 	}
@@ -102,7 +102,7 @@ public class QuartzConfigration {
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
 			SchedulerFactoryBean schedulerFactoryBean = ctx.getBean(SchedulerFactoryBean.class);
-			schedulerFactoryBean.start();
+			//schedulerFactoryBean.start();
 		};
 	}
 

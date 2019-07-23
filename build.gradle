@@ -17,6 +17,7 @@ repositories {
      maven { url "http://repo.maven.apache.org/maven2" }
 }
 dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.0.5.RELEASE'
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: '9.0.22'
     compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.17.Final'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-quartz', version: '2.0.5.RELEASE'

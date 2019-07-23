@@ -9,8 +9,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Component
 public class AppRunner implements CommandLineRunner {
@@ -22,12 +20,12 @@ public class AppRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("---------------Let's inspect the beans provided by Spring Boot!---------------");
-		String[] beanNames = applicationContext.getBeanDefinitionNames();
-		Arrays.sort(beanNames);
-		for (String beanName : beanNames) {
-			logger.info(beanName);
-		}
-		logger.info("------------------------------------------------------------------------------");
+		//logger.info("---------------Let's inspect the beans provided by Spring Boot!---------------");
+		//String[] beanNames = applicationContext.getBeanDefinitionNames();
+		//Arrays.sort(beanNames);
+		//for (String beanName : beanNames) {
+		//	logger.info(beanName);
+		//}
+		//logger.info("------------------------------------------------------------------------------");
 	}
 }
