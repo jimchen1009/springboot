@@ -116,7 +116,7 @@ spring:
     protocol: smtp
     default-encoding: UTF-8
     username: 915508287@qq.com
-    password: ******
+    password: 000000
     properties:
       mail:
         smtp:
