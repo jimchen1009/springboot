@@ -131,6 +131,8 @@ spring:
 
 server:
   port: 8080
+  tomcat:
+    basedir: D:/demo/springboot/
 
 logging:
   path: D:/demo/springboot/logs

@@ -41,4 +41,5 @@ dependencies {
     runtime group: 'mysql', name: 'mysql-connector-java', version:'5.1.47'
     testCompile group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '2.0.2.RELEASE'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.5.RELEASE'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.22'
 }

@@ -78,6 +78,7 @@ tmp/
 classes/
 /logs/
 /ignoredata/
+/work/
 
 ## Use *.dist to recover original configuration.
 

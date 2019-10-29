@@ -2,8 +2,13 @@ package com.ximuyi.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+import java.io.File;
 
 /***
  * @ComponentScan("com.ximuyi.demo")
@@ -21,11 +26,28 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @ComponentScan tells Spring to look for other components, configurations, and services in the hello package, allowing it to find the controllers.
  */
 @SpringBootApplication
-public class SpringbootApplication {
+public class SpringbootApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(SpringbootApplication.class);
 
 	public static void main(String[] args) {
+		/**
+		 * 启动参数的working directory
+		 * $MODULE_DIR$：D:\demo\springboot\.idea\modules
+		 * %MODULE_WORKING_DIR%:D:\demo\springboot
+		 */
+		File file = new File("");
+		logger.debug("file path: {}", file.getAbsolutePath());
 		SpringApplication.run(SpringbootApplication.class, args);
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(SpringbootApplication.class);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		logger.debug("SpringBoot 启动完毕!");
 	}
 }
