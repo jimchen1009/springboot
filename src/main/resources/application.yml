@@ -126,6 +126,12 @@ spring:
             required: true
         debug: true
 
+  thymeleaf:
+    prefix: classpath:/thymeleaf/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
 
 
 

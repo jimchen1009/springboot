@@ -18,7 +18,8 @@ public class DocumentDirectoryCustomizer implements TomcatContextCustomizer {
 	public void customize(Context context) {
 		try {
 			File resource = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + "document");
-			String absolutePath = resource.getAbsolutePath();
+			int index = resource.getAbsolutePath().lastIndexOf(File.separator);
+			String absolutePath = resource.getAbsolutePath().substring(0, index);
 			context.setDocBase(absolutePath);
 		} catch (FileNotFoundException e) {
 			logger.error("", e);
