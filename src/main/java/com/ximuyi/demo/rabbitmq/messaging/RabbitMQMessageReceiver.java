@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * http://localhost:15672/
  */
-@Component
+//@Component
 public class RabbitMQMessageReceiver {
 
 	static final String topicExchangeName = "spring-boot-exchange";

@@ -12,11 +12,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
-@Configuration
-@Component
+//@Configuration
+//@Component
 public class RabbitMQTopicConfiguration {
 
 	static final String ExchangeName = "spring-boot-topic";

@@ -13,8 +13,8 @@ tasks.withType(JavaCompile) {
 }
 
 repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
+    maven { url "http://repo.maven.apache.org/maven2" }
 }
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.0.5.RELEASE'
@@ -42,4 +42,7 @@ dependencies {
     testCompile group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '2.0.2.RELEASE'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.5.RELEASE'
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.22'
+    compile group: 'com.typesafe.akka', name: 'akka-actor_2.13', version: '2.6.3'
+    implementation 'org.testng:testng:6.9.6'
+
 }
