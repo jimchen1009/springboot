@@ -5,10 +5,10 @@ spring:
 
   datasource:
     primary:
-      driver-class-name: com.mysql.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true&useSSL=false
-      username: root
-      password: 000000
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/demo?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true&useSSL=false
+      username: "root"
+      password: "000000"
       type: com.alibaba.druid.pool.DruidDataSource
       druid:
         clear-filters-enable: true
@@ -26,10 +26,10 @@ spring:
         max-open-prepared-statements: 20
         filters: stat
     quartz:
-      driver-class-name: com.mysql.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/quartz?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-      username: root
-      password: 000000
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/quartz?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: "root"
+      password: "000000"
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
         minimum-idle: 5
@@ -40,6 +40,9 @@ spring:
         max-lifetime: 0
 
   jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
         ddl-auto: update
@@ -48,7 +51,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 7008
-#    password: 123456
+    password: 123456
     jedis:
       pool:
         max-active: 10
@@ -88,7 +91,7 @@ spring:
            #这个配置不需要~ 看样子是会覆盖上面dataSource的配置~
 #          dataSource:
 #            quartzDataSource:
-#              driver: com.mysql.jdbc.Driver
+#              driver: com.mysql.cj.jdbc.Driver
 #              URL: jdbc:mysql:///localhost:3306/quartz
 #              user: root
 #              password: 000000

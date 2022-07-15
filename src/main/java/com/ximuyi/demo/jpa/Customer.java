@@ -1,15 +1,18 @@
 package com.ximuyi.demo.jpa;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 //通过@Entity 表明是一个映射的实体类， @Id表明id， @GeneratedValue 字段自动生成
-@Entity
+@Entity()
 public class Customer {
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Long id;
     private String firstName;
     private String lastName;
