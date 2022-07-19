@@ -17,12 +17,12 @@ public class ScheduledTasks {
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
 
-	@Scheduled(fixedRate = 60000)
+	@Scheduled(fixedRate = 5 * 60 * 1000)
 	public void reportCurrentTime() {
 		log.info("scheduling tasks examples: the time is now :{}", dateFormat.format(new Date()));
 	}
 
-	@Scheduled(cron = "0 */1 *  * * * ")
+	@Scheduled(cron = "0 */5 *  * * * ")
 	public void reportCurrentByCron(){
 		log.info("scheduling tasks examples by cron: the time is now: {}" , dateFormat.format (new Date ()));
 	}

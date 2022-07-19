@@ -1,13 +1,14 @@
 package com.ximuyi.demo.jsp;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /***
  * JSP 与 thymeleaf 暂时没有弄懂怎么配置共存，注释掉
  * @return
  */
-//@Configuration
+@Configuration
 public class WebJspConfiguration {
 
 	@Bean

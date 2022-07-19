@@ -132,14 +132,14 @@ spring:
   thymeleaf:
     prefix: classpath:/thymeleaf/
     suffix: .html
-    mode: HTML5
+    mode: HTML
     encoding: UTF-8
     cache: false
 
 
 
 server:
-  port: 8080
+  port: 8088
   tomcat:
     basedir: D:/demo/springboot/
 
