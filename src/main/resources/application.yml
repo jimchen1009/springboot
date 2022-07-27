@@ -49,6 +49,12 @@ spring:
       show-sql: true
 
   redis:
+    key:
+      prefix:
+        authCode: "portal:authCode:"
+      expire:
+        authCode: 120 # 验证码超期时间
+
     host: 127.0.0.1
     port: 7008
     password: 123456
