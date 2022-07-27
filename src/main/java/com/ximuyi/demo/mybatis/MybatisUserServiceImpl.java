@@ -3,6 +3,7 @@ package com.ximuyi.demo.mybatis;
 import com.github.pagehelper.PageHelper;
 import com.ximuyi.demo.mybatis.mapper.MybatisUserMapper;
 import com.ximuyi.demo.mybatis.model.MybatisUser;
+import com.ximuyi.demo.mybatis.model.MybatisUserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class MybatisUserServiceImpl implements MybatisUserService {
 
     @Override
     public List<MybatisUser> selectAllUser() {
-        return mybatisUserMapper.selectAllUser();
+        return mybatisUserMapper.selectByExample(new MybatisUserExample());
     }
 
     @Override
@@ -38,6 +39,6 @@ public class MybatisUserServiceImpl implements MybatisUserService {
     @Override
     public List<MybatisUser> findAllUser(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return mybatisUserMapper.selectAllUser();
+        return mybatisUserMapper.selectByExample(new MybatisUserExample());
     }
 }

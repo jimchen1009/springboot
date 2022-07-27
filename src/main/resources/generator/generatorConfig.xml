@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-    <properties resource="generator\generator.properties"></properties>
+    <properties resource="generator\generator.properties"/>
 
     <classPathEntry location="${jdbc.driverLocation}" />
 
@@ -44,6 +44,8 @@
             <property name="rootInterface" value=""/>
         </javaClientGenerator>
 
-        <table tableName="mybatis_user" domainObjectName="MybatisUser" enableCountByExample="false" selectByPrimaryKeyQueryId="true" delimitIdentifiers="true" delimitAllColumns="true"/>
+        <table tableName="mybatis_user" domainObjectName="MybatisUser" enableCountByExample="false" selectByPrimaryKeyQueryId="true" delimitIdentifiers="true" delimitAllColumns="true">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
     </context>
 </generatorConfiguration>

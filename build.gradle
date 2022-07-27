@@ -46,6 +46,7 @@ dependencies {
     implementation 'org.testng:testng:6.9.6'
     implementation group: 'com.google.zxing', name: 'core', version: '3.5.0'
     implementation group: 'cn.hutool', name: 'hutool-all', version: '5.8.4'
+    implementation group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.4.1'
 
 
 }

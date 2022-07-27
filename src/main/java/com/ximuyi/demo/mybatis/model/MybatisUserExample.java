@@ -11,7 +11,7 @@ public class MybatisUserExample {
     protected List<Criteria> oredCriteria;
 
     public MybatisUserExample() {
-        oredCriteria = new ArrayList<Criteria>();
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -68,7 +68,7 @@ public class MybatisUserExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -105,132 +105,132 @@ public class MybatisUserExample {
         }
 
         public Criteria andUserIdIsNull() {
-            addCriterion("`user_id` is null");
+            addCriterion("`userId` is null");
             return (Criteria) this;
         }
 
         public Criteria andUserIdIsNotNull() {
-            addCriterion("`user_id` is not null");
+            addCriterion("`userId` is not null");
             return (Criteria) this;
         }
 
         public Criteria andUserIdEqualTo(Integer value) {
-            addCriterion("`user_id` =", value, "userId");
+            addCriterion("`userId` =", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdNotEqualTo(Integer value) {
-            addCriterion("`user_id` <>", value, "userId");
+            addCriterion("`userId` <>", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdGreaterThan(Integer value) {
-            addCriterion("`user_id` >", value, "userId");
+            addCriterion("`userId` >", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("`user_id` >=", value, "userId");
+            addCriterion("`userId` >=", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdLessThan(Integer value) {
-            addCriterion("`user_id` <", value, "userId");
+            addCriterion("`userId` <", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdLessThanOrEqualTo(Integer value) {
-            addCriterion("`user_id` <=", value, "userId");
+            addCriterion("`userId` <=", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdIn(List<Integer> values) {
-            addCriterion("`user_id` in", values, "userId");
+            addCriterion("`userId` in", values, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdNotIn(List<Integer> values) {
-            addCriterion("`user_id` not in", values, "userId");
+            addCriterion("`userId` not in", values, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdBetween(Integer value1, Integer value2) {
-            addCriterion("`user_id` between", value1, value2, "userId");
+            addCriterion("`userId` between", value1, value2, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("`user_id` not between", value1, value2, "userId");
+            addCriterion("`userId` not between", value1, value2, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserNameIsNull() {
-            addCriterion("`user_name` is null");
+            addCriterion("`userName` is null");
             return (Criteria) this;
         }
 
         public Criteria andUserNameIsNotNull() {
-            addCriterion("`user_name` is not null");
+            addCriterion("`userName` is not null");
             return (Criteria) this;
         }
 
         public Criteria andUserNameEqualTo(String value) {
-            addCriterion("`user_name` =", value, "userName");
+            addCriterion("`userName` =", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameNotEqualTo(String value) {
-            addCriterion("`user_name` <>", value, "userName");
+            addCriterion("`userName` <>", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameGreaterThan(String value) {
-            addCriterion("`user_name` >", value, "userName");
+            addCriterion("`userName` >", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameGreaterThanOrEqualTo(String value) {
-            addCriterion("`user_name` >=", value, "userName");
+            addCriterion("`userName` >=", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameLessThan(String value) {
-            addCriterion("`user_name` <", value, "userName");
+            addCriterion("`userName` <", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameLessThanOrEqualTo(String value) {
-            addCriterion("`user_name` <=", value, "userName");
+            addCriterion("`userName` <=", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameLike(String value) {
-            addCriterion("`user_name` like", value, "userName");
+            addCriterion("`userName` like", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameNotLike(String value) {
-            addCriterion("`user_name` not like", value, "userName");
+            addCriterion("`userName` not like", value, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameIn(List<String> values) {
-            addCriterion("`user_name` in", values, "userName");
+            addCriterion("`userName` in", values, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameNotIn(List<String> values) {
-            addCriterion("`user_name` not in", values, "userName");
+            addCriterion("`userName` not in", values, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameBetween(String value1, String value2) {
-            addCriterion("`user_name` between", value1, value2, "userName");
+            addCriterion("`userName` between", value1, value2, "userName");
             return (Criteria) this;
         }
 
         public Criteria andUserNameNotBetween(String value1, String value2) {
-            addCriterion("`user_name` not between", value1, value2, "userName");
+            addCriterion("`userName` not between", value1, value2, "userName");
             return (Criteria) this;
         }
 
@@ -376,7 +376,6 @@ public class MybatisUserExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }
