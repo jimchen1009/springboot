@@ -114,12 +114,12 @@ spring:
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true
   mail:
-    host: smtp.qq.com
+    host: smtp.exmail.qq.com
     port: 25
     protocol: smtp
     default-encoding: UTF-8
-    username: 915508287@qq.com
-    password: 000000
+    username: chenjingjun@aobi.com
+    password: oDZ6AhkaL4apgCMm
     properties:
       mail:
         smtp:
