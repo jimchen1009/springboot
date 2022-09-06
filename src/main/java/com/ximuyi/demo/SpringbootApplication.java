@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
 import java.io.File;
 
@@ -26,6 +27,7 @@ import java.io.File;
  * @ComponentScan tells Spring to look for other components, configurations, and services in the hello package, allowing it to find the controllers.
  */
 @SpringBootApplication
+@EnableOpenApi
 public class SpringbootApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(SpringbootApplication.class);

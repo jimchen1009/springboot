@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
+
 @RequestMapping("/resttemple")
 @RestController
 public class RestTempleController {
@@ -27,8 +29,8 @@ public class RestTempleController {
 	@Bean
 	public RestTemplateBuilder getRestTemplateBuilder (){
 		RestTemplateBuilder builder = new RestTemplateBuilder();
-		builder.setConnectTimeout(3000);
-		builder.setReadTimeout(3000);
+		builder.setConnectTimeout(Duration.ofMinutes(3000));
+		builder.setReadTimeout(Duration.ofMinutes(3000));
 		return builder;
 	}
 

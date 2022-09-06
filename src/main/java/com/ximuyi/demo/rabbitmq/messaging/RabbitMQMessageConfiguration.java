@@ -6,14 +6,13 @@ import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 //@Configuration
 public class RabbitMQMessageConfiguration {
@@ -79,12 +78,7 @@ public class RabbitMQMessageConfiguration {
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
 		container.setQueues(queue());
 		container.setAcknowledgeMode(AcknowledgeMode.AUTO);
-		container.setMessageListener(new ChannelAwareMessageListener() {
-
-			public void onMessage(Message message, com.rabbitmq.client.Channel channel) throws Exception {
-				logger.info("Queue V2 消费端接收到消息 : " + new String(message.getBody()));
-			}
-		});
+		container.setMessageListener((ChannelAwareMessageListener) (message, channel) -> logger.info("Queue V2 消费端接收到消息 : " + new String(message.getBody())));
 		return container;
 	}
 

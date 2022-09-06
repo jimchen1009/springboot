@@ -3,6 +3,10 @@ spring:
   profiles:
     active: dev
 
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+
   datasource:
     primary:
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -91,34 +95,26 @@ spring:
       #文件的注释跟脚本一起[springboot解析后的结果]，执行不了
       #-- Dumping database structure for quartz DROP DATABASE IF EXISTS `quartz`
       #尝试了几种方案，ScriptUtils都解析错误，没办法了
-    properties:
-      org:
-        quartz:
-           #这个配置不需要~ 看样子是会覆盖上面dataSource的配置~
-#          dataSource:
-#            quartzDataSource:
-#              driver: com.mysql.cj.jdbc.Driver
-#              URL: jdbc:mysql:///localhost:3306/quartz
-#              user: root
-#              password: 000000
-          scheduler:
-            #instanceName设置是没啥用的~ SpringBoot貌似已经写死了BeanName作为名字了~
-            #只能写代码实现了~
-            instanceName: SpringBoot
-            instanceId: AUTO
-          jobStore:
-            class: org.quartz.impl.jdbcjobstore.JobStoreTX
-            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-            tablePrefix: qrtz_
-            isClustered: true
-            dataSource: quartzDataSource
-            clusterCheckinInterval: 10000
-            useProperties: true
-          threadPool:
-            class: org.quartz.simpl.SimpleThreadPool
-            threadCount: 10
-            threadPriority: 5
-            threadsInheritContextClassLoaderOfInitializingThread: true
+    properties.org.quartz:
+        scheduler:
+          #instanceName设置是没啥用的~ SpringBoot貌似已经写死了BeanName作为名字了~
+          #只能写代码实现了~
+          instanceName: SpringBoot
+          instanceId: AUTO
+        jobStore:
+          #class: org.quartz.impl.jdbcjobstore.JobStoreTX
+          #spring-boot-starter-quartz 高版本使用方式变化, 使用默认的DB数据源
+          driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+          tablePrefix: qrtz_
+          isClustered: true
+          dataSource: quartzDataSource
+          clusterCheckinInterval: 10000
+          useProperties: true
+        threadPool:
+          class: org.quartz.simpl.SimpleThreadPool
+          threadCount: 10
+          threadPriority: 5
+          threadsInheritContextClassLoaderOfInitializingThread: true
   mail:
     host: smtp.exmail.qq.com
     port: 25
@@ -142,16 +138,25 @@ spring:
     encoding: UTF-8
     cache: false
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
+# 引入了spring-boot-starter-security 需要账号密码登录
+  security:
+    user:
+      name: "admin"
+      password: "000000"
 
 server:
   port: 8088
   tomcat:
-    basedir: D:/demo/springboot/
+    basedir: E:/demo/springboot/
 
 logging:
-  path: D:/demo/springboot/logs
   level: {root: info}
+  file:
+    path: E:/demo/springboot/logs
 
 
 ## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
@@ -175,5 +180,5 @@ jim:
   greeting: hi,i'm  ${jim.name}
 
 storage:
-  location: D:\demo\springboot\out\production\resources\storage
+  location: E:\demo\springboot\out\production\resources\storage
 
