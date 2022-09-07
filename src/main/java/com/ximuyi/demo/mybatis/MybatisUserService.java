@@ -8,6 +8,8 @@ public interface MybatisUserService {
 
     List<MybatisUser> selectAllUser();
 
+    MybatisUser getUserByName(String name);
+
     int addUser(MybatisUser user);
 
     List<MybatisUser> findAllUser(int pageNum, int pageSize);

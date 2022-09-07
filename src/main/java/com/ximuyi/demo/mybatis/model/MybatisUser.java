@@ -9,6 +9,8 @@ public class MybatisUser {
 
     private String phone;
 
+    private String role;
+
     public Integer getUserId() {
         return userId;
     }
@@ -39,5 +41,13 @@ public class MybatisUser {
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role == null ? null : role.trim();
     }
 }

@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -31,10 +30,11 @@ import java.util.Collection;
 import java.util.List;
 
 
-//http://localhost:8088/swagger-ui/
+/**
+ * http://localhost:8088/swagger-ui/
+ */
 @Configuration
 @EnableSwagger2
-@EnableWebMvc
 public class SwaggerConfig {
 
     /**

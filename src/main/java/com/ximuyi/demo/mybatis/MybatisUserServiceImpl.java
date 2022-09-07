@@ -5,7 +5,6 @@ import com.ximuyi.demo.mybatis.mapper.MybatisUserMapper;
 import com.ximuyi.demo.mybatis.model.MybatisUser;
 import com.ximuyi.demo.mybatis.model.MybatisUserExample;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +18,14 @@ public class MybatisUserServiceImpl implements MybatisUserService {
     @Override
     public List<MybatisUser> selectAllUser() {
         return mybatisUserMapper.selectByExample(new MybatisUserExample());
+    }
+
+    @Override
+    public MybatisUser getUserByName(String name) {
+        MybatisUserExample example = new MybatisUserExample();
+        example.createCriteria().andUserNameEqualTo(name);
+        List<MybatisUser> mybatisUserList = mybatisUserMapper.selectByExample(example);
+        return mybatisUserList.isEmpty() ? null : mybatisUserList.get(0);
     }
 
     @Override
